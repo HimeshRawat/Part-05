@@ -22,21 +22,92 @@ const Header = () => {
   );
 };
 const RestaurantCard = (props) => {
-  const { resName, cuisine } = props;
+  const { resData } = props;
   console.log(props);
   return (
     <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
       <img
         className="res-logo"
         alt="res-logo"
-        src="https://b.zmtcdn.com/data/dish_photos/818/943ccb1366e01405d5a1e0376e576818.jpeg?output-format=webp"
+        src={
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+          resData.info.cloudinaryImageId
+        }
       />
-      <h3>{resName}</h3>
-      <h4>{cuisine}</h4>
-      <h4>4.3 stars</h4>
-      <h4>36 minutes</h4>
+      <h3>{resData.info.name}</h3>
+      <h4>{resData.info.cuisines.join(", ")}</h4>
+      <h4>{resData.info.avgRating} stars</h4>
+      <h4>{resData.info.costForTwo}</h4>
+      <h4>{resData.info.sla.deliveryTime} minutes</h4>
     </div>
   );
+};
+const resObj = {
+  info: {
+    id: "691733",
+    name: "Chinese Wok",
+    cloudinaryImageId: "e0839ff574213e6f35b3899ebf1fc597",
+    locality: "Kashmiri Gate",
+    areaName: "Kashmere Gate Metro Station",
+    costForTwo: "₹250 for two",
+    cuisines: ["Chinese", "Asian", "Tibetan", "Desserts"],
+    avgRating: 4.2,
+    parentId: "61955",
+    avgRatingString: "4.2",
+    totalRatingsString: "100+",
+    sla: {
+      deliveryTime: 43,
+      lastMileTravel: 2.9,
+      serviceability: "SERVICEABLE",
+      slaString: "40-45 mins",
+      lastMileTravelString: "2.9 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+    availability: {
+      nextCloseTime: "2024-07-13 00:00:00",
+      opened: true,
+    },
+    badges: {},
+    isOpen: true,
+    type: "F",
+    badgesV2: {
+      entityBadges: {
+        textBased: {},
+        imageBased: {},
+        textExtendedBadges: {},
+      },
+    },
+    aggregatedDiscountInfoV3: {
+      header: "ITEMS",
+      subHeader: "AT ₹179",
+    },
+    differentiatedUi: {
+      displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      differentiatedUiMediaDetails: {
+        mediaType: "ADS_MEDIA_ENUM_IMAGE",
+        lottie: {},
+        video: {},
+      },
+    },
+    reviewsSummary: {},
+    displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    restaurantOfferPresentationInfo: {},
+    externalRatings: {
+      aggregatedRating: {
+        rating: "1.9",
+        ratingCount: "10+",
+      },
+      source: "GOOGLE",
+      sourceIconImageId: "v1704440323/google_ratings/rating_google_tag",
+    },
+    ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+  },
+  analytics: {},
+  cta: {
+    link: "swiggy://menu?restaurant_id=691733",
+    text: "RESTAURANT_MENU",
+    type: "DEEPLINK",
+  },
 };
 
 const Body = () => {
@@ -45,11 +116,7 @@ const Body = () => {
       <div className="search">Search</div>
       <div className="res-container">
         {/* restaurant card */}
-        <RestaurantCard
-          resName="Shimla Dhaba"
-          cuisine="Biryani, North Indian, Asian"
-        />
-        <RestaurantCard resName="KFC" cuisine="Burger, Fast Foods" />
+        <RestaurantCard resData={resObj} />
       </div>
     </div>
   );
