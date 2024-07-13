@@ -23,7 +23,7 @@
   flex-wrap: wrap;
 }
 .res-card {
-  height: 390px;
+  /* height: 390px; */
   width: 200px;
   padding: 5px;
   margin: 2px;
@@ -34,5 +34,4 @@
 }
 .res-logo {
   width: 100%;
-  height: 160px;
 }
