@@ -35,3 +35,15 @@
 .res-logo {
   width: 100%;
 }
+.filter-btn{
+  margin: 10px;
+  cursor: pointer;
+  transition: all linear 0.5s;
+  background-color: black;
+  color: white;
+  border-radius: 50px;
+  padding: 0.4vw 0.6vw;
+}
+/* .filter-btn:hover{
+  border: 2px solid yellow;
+} */
